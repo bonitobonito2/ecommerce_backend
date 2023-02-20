@@ -16,4 +16,9 @@ export class AuthController {
     const xd = await this.usersService.save();
     return xd;
   }
+  @Get('/delete')
+  async delete(@Body() data: any) {
+    const xd = await this.usersService.delete();
+    return xd;
+  }
 }

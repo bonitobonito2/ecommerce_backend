@@ -22,4 +22,10 @@ export class AuthService {
     });
     return data;
   }
+
+  public async delete() {
+    const data = await this.messagesRepository.query('DELETE FROM user ');
+
+    return 'deleted every single raw';
+  }
 }

@@ -9,9 +9,7 @@ export class AuthService {
   private readonly messagesRepository: Repository<Users>;
 
   public async getEverything() {
-    const data = await this.messagesRepository.findOneBy({
-      first_name: 'dito',
-    });
+    const data = await this.messagesRepository.query('select * from user');
     console.log(data);
     return data;
   }

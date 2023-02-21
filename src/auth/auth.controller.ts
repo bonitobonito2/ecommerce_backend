@@ -13,5 +13,8 @@ export class AuthController {
   }
 
   @Post('/registration')
-  async registration(@Body() data: registrationDto) {}
+  async registration(@Body() data: registrationDto) {
+    console.log(data);
+    return await this.usersService.registar(data);
+  }
 }

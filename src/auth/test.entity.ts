@@ -25,4 +25,7 @@ export class Users {
 
   @Column()
   gender: string;
+
+  @Column()
+  password: string;
 }

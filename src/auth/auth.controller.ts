@@ -1,6 +1,7 @@
 import { Body, Controller, Get } from '@nestjs/common';
 import { Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { registrationDto } from './dtos/registration.dto';
 @Controller('auth')
 export class AuthController {
   constructor(private usersService: AuthService) {}
@@ -11,14 +12,6 @@ export class AuthController {
     return xd;
   }
 
-  @Get('/save')
-  async save(@Body() data: any) {
-    const xd = await this.usersService.save();
-    return xd;
-  }
-  @Get('/delete')
-  async delete(@Body() data: any) {
-    const xd = await this.usersService.delete();
-    return xd;
-  }
+  @Post('/registration')
+  async registration(@Body() data: registrationDto) {}
 }

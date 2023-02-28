@@ -46,8 +46,14 @@ export class AuthService {
       password == userExsists.password
       // (await bycript.compare(password, userExsists.password))
     ) {
-      const payload = { email };
-      const accsessToken: string = await this.jwtService.sign(payload);
+      const payload = {
+        email,
+        firstName: userExsists.first_name,
+        lastName: userExsists.last_name,
+        id: userExsists.id,
+        gender: userExsists.gender,
+      };
+      const accsessToken: string = this.jwtService.sign(payload);
       return {
         id: userExsists.id,
         payload: accsessToken,

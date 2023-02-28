@@ -48,7 +48,14 @@ export class AuthService {
     ) {
       const payload = { email };
       const accsessToken: string = await this.jwtService.sign(payload);
-      return { payload: accsessToken };
+      return {
+        id: userExsists.id,
+        payload: accsessToken,
+        firstName: userExsists.first_name,
+        gender: userExsists.gender,
+        lastName: userExsists.last_name,
+        email: userExsists.email,
+      };
     } else {
       return {
         payload: 'password or email is incorrect',

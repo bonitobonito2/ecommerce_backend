@@ -15,6 +15,12 @@ export class AuthController {
     return xd;
   }
 
+  @Get('/isTokenValid')
+  @UseGuards(AuthGuard())
+  async isTokenValid(@Body() data: any, @Req() user) {
+    return user['user'];
+  }
+
   @Post('/registration')
   async registration(@Body() data: registrationDto) {
     console.log(data);

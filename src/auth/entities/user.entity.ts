@@ -1,14 +1,4 @@
-import {
-  Entity,
-  OneToOne,
-  JoinColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-  PrimaryGeneratedColumn,
-  OneToMany,
-} from 'typeorm';
-import { MessageEncryptionConfig } from './messageEncryptionConfig/messageEncryptionConfig';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { EncryptionTransformer } from 'typeorm-encrypted';
 
 @Entity('user')

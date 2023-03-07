@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Users } from './test.entity';
+import { Users } from './entities/user.entity';
 import { registrationDto } from './dtos/registration.dto';
 import { JwtService } from '@nestjs/jwt/dist';
 

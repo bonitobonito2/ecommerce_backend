@@ -7,12 +7,13 @@ import {
   Res,
   StreamableFile,
   UploadedFile,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileUploaderService } from './file-uploader.service';
 import * as fs from 'fs';
-import * as path from 'path';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('file-uploader')
 export class FileUploaderController {
@@ -25,10 +26,10 @@ export class FileUploaderController {
   }
 
   @Get('images/:filename')
+  @UseGuards(AuthGuard())
   async getImage(@Param('filename') filename: string, @Req() user) {
     try {
       const filePath = `./src/uploads/${filename}.png`; // Change this to the path where your images are stored
-      console.log(filePath, 'filepath');
       const patchExsists = fs.existsSync(filePath);
       if (!patchExsists) {
         throw new Error();

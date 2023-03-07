@@ -6,11 +6,9 @@ import * as jwt from 'jsonwebtoken';
 export class JwtMiddleware implements NestMiddleware {
   async use(req: Request, res: Response, next: NextFunction) {
     const token = req.headers.authorization?.split(' ')[1];
-    console.log(token, 'token');
     if (token) {
       try {
-        const decoded = await jwt.verify(token, 'topSecret51');
-        console.log(decoded);
+        const decoded = jwt.verify(token, 'topSecret51');
         req['user'] = decoded;
       } catch (error) {
         console.log(error);

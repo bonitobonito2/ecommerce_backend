@@ -39,13 +39,8 @@ export class AuthService {
     const userExsists: Users = await this.messagesRepository.findOneBy({
       email: email,
     });
-    // console.log(userExsists);
 
-    if (
-      userExsists &&
-      password == userExsists.password
-      // (await bycript.compare(password, userExsists.password))
-    ) {
+    if (userExsists && password == userExsists.password) {
       const payload = {
         email,
         firstName: userExsists.first_name,

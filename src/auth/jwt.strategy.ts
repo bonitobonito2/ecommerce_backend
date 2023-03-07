@@ -6,7 +6,7 @@ import { Users } from './entities/user.entity';
 import { JwtService } from '@nestjs/jwt';
 import { PassportStrategy } from '@nestjs/passport';
 
-interface idk {
+interface getInfo {
   email: string;
   iat: number;
   exp: number;
@@ -25,8 +25,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: idk): Promise<Users> {
-    //  console.log('aba vnaxot',process.env.SECRET_KEY)
+  async validate(payload: getInfo): Promise<Users> {
     const { email } = payload;
     const userExsists = await this.tasksRepository.findOneBy({ email: email });
     if (userExsists) {

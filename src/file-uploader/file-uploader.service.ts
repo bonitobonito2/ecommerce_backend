@@ -13,7 +13,7 @@ export class FileUploaderService {
 
   public async uploadProfilePicture(file, header) {
     const user = header['user'];
-    // console.log(user, 'xddddddd');
+
     await this.profilePictureRepo.delete({ user_id: user.id });
     await this.profilePictureRepo.insert({
       user_id: user.id,

@@ -36,12 +36,9 @@ export class FileUploaderController {
       const stream = fs.createReadStream(filePath);
       return new StreamableFile(stream);
     } catch (err) {
-      // console.log('shemovedi');
       const filePath = `./src/uploads/avatar.jpeg`;
       const stream = fs.createReadStream(filePath);
       return new StreamableFile(stream);
     }
-
-    // const chunk = stream.on('data', (chunk) => chunk);
   }
 }

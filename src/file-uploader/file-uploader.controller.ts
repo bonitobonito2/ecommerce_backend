@@ -27,19 +27,7 @@ export class FileUploaderController {
   }
 
   @Get('images/:filename')
-  async getImage(@Param('filename') filename: string, @Req() user) {
-    try {
-      const filePath = `./src/uploads/${filename}.png`; // Change this to the path where your images are stored
-      const patchExsists = fs.existsSync(filePath);
-      if (!patchExsists) {
-        throw new Error();
-      }
-      const stream = fs.createReadStream(filePath);
-      return new StreamableFile(stream);
-    } catch (err) {
-      const filePath = `./src/uploads/avatar.jpeg`;
-      const stream = fs.createReadStream(filePath);
-      return new StreamableFile(stream);
-    }
+  async getProfileImage(@Param('filename') filename: string) {
+    return this.uploadFileService.takeProfilePicture(filename);
   }
 }

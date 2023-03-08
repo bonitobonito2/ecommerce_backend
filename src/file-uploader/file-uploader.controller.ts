@@ -21,12 +21,12 @@ export class FileUploaderController {
 
   @Post('uploadProfilePicture')
   @UseInterceptors(FileInterceptor('image'))
+  @UseGuards(AuthGuard())
   async uploadProfilePicture(@UploadedFile() file, @Req() user) {
     return await this.uploadFileService.uploadProfilePicture(file, user);
   }
 
   @Get('images/:filename')
-  @UseGuards(AuthGuard())
   async getImage(@Param('filename') filename: string, @Req() user) {
     try {
       const filePath = `./src/uploads/${filename}.png`; // Change this to the path where your images are stored

@@ -6,6 +6,7 @@ import { registrationDto } from './dtos/registration.dto';
 import { JwtService } from '@nestjs/jwt/dist';
 
 import LoginDto from './dtos/login.dto';
+import ChangePasswordDto from './dtos/changePassword.dto';
 
 @Injectable()
 export class AuthService {
@@ -61,6 +62,18 @@ export class AuthService {
       return {
         payload: 'password or email is incorrect',
       };
+    }
+  }
+
+  async changePassword(data: ChangePasswordDto) {
+    const user = await this.messagesRepository.findOneBy({ email: data.email });
+
+    if (user.password == data.oldPassword) {
+      user.password = data.newPassword;
+      this.messagesRepository.save(user);
+      return 'password changed';
+    } else {
+      return 'incorect password';
     }
   }
 }

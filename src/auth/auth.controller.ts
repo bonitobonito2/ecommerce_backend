@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { registrationDto } from './dtos/registration.dto';
 import LoginDto from './dtos/login.dto';
 import { AuthGuard } from '@nestjs/passport';
+import ChangePasswordDto from './dtos/changePassword.dto';
 @Controller('auth')
 export class AuthController {
   constructor(private usersService: AuthService) {}
@@ -13,6 +14,11 @@ export class AuthController {
   async signup(@Body() data: any) {
     const xd = await this.usersService.getEverything();
     return xd;
+  }
+
+  @Post('changePassword')
+  async changePassword(@Body() data: ChangePasswordDto) {
+    return await this.usersService.changePassword(data);
   }
 
   @Get('/isTokenValid')

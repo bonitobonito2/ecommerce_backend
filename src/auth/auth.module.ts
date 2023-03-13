@@ -19,6 +19,8 @@ import { JwtStrategy } from './jwt.strategy';
     }),
   ],
 
+  //xdxdxd
+
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy],
   exports: [JwtStrategy, PassportModule],

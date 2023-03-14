@@ -6,14 +6,13 @@ import { Users } from './auth/entities/user.entity';
 import { JwtMiddleware } from './middlewares/jwt.middleware';
 import { FileUploaderController } from './file-uploader/file-uploader.controller';
 import { FileUploaderModule } from './file-uploader/file-uploader.module';
-import { ProfilePictures } from './file-uploader/entities/profileImages.entity';
-
+import { UserPosts } from './file-uploader/entities/posts.entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'shoppingDB',
-      entities: [Users, ProfilePictures],
+      entities: [Users, UserPosts],
       synchronize: true,
     }),
     AuthModule,

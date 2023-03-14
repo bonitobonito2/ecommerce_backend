@@ -7,12 +7,12 @@ export class UserPosts {
   @Column()
   description: string;
 
-  @Column('number', { nullable: true })
+  @Column('integer', { nullable: true })
   image_id: number | null;
 
-  @Column('timestamp without time zone', { name: 'created_at', nullable: true })
+  @Column('integer', { name: 'created_at', nullable: true })
   created_at: Date | null;
 
-  @Column('timestamp without time zone', { name: 'updated_at', nullable: true })
+  @Column('integer', { name: 'updated_at', nullable: true })
   updated_at: Date | null;
 }

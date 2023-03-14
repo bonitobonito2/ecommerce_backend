@@ -3,15 +3,16 @@ import { FileUploaderService } from './file-uploader.service';
 import { FileUploaderController } from './file-uploader.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Users } from 'src/auth/entities/user.entity';
-import { ProfilePictures } from './entities/profileImages.entity';
+import { UserPosts } from './entities/posts.entity';
 import { JwtMiddleware } from 'src/middlewares/jwt.middleware';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from 'src/auth/jwt.strategy';
+import { PostImages } from './entities/postImages.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([ProfilePictures, Users]),
+    TypeOrmModule.forFeature([UserPosts, Users, PostImages]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
       secret: 'topSecret51',
